@@ -1,7 +1,9 @@
-import express from "express";
+import express, { type Request, type Response } from "express";
 import { isAuth } from "./middleware/is-auth";
 import { sessionMiddleware } from "./middleware/session";
 import passport from "passport";
+import { userService } from "./services/userService";
+import { type User } from "./models/user";
 
 // Import passport session serialization/deserialization config
 import "./middleware/passport-session";
@@ -9,7 +11,11 @@ import "./middleware/passport-session";
 // Import passport strategy(ies) config
 import "./middleware/passport-github";
 
+// Define request body type using Omit to exclude server-generated fields
+type CreateUserRequest = Omit<User, "id">;
+
 const app = express();
+app.use(express.json());
 
 // Setup express session
 app.use(sessionMiddleware);
@@ -25,6 +31,17 @@ app.get("/", isAuth, (req, res) => {
     `Hello, you are logged in as ${JSON.stringify(req.user)} via Express!`
   );
 });
+
+app.post(
+  "/users",
+  isAuth,
+  (req: Request<{}, {}, CreateUserRequest>, res: Response) => {
+    const { name, email } = req.body;
+    const user = { id: Date.now().toString(), name, email };
+    userService.save(user);
+    res.status(201).json(user);
+  }
+);
 
 app.get(
   "/auth/github",
