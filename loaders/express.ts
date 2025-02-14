@@ -5,7 +5,7 @@ import { sessionMiddleware } from "../middleware/session";
 import type { CreateUserRequest } from "../models/user";
 import { userService } from "../services/userService";
 
-export default async function () {
+export default async function (): Promise<express.Express> {
   const app = express();
   app.use(express.json());
 
@@ -48,4 +48,6 @@ export default async function () {
   app.listen(3000, () => {
     console.log("Listening on port 3000");
   });
+
+  return app;
 }
