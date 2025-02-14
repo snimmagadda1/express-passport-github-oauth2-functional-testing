@@ -1,4 +1,4 @@
-import session, { MemoryStore } from "express-session";
+import session from "express-session";
 
 export const sessionMiddleware = session({
   secret: "super-secret-shh",
