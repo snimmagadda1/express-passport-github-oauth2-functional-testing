@@ -3,15 +3,21 @@ import { isAuth } from "./middleware/is-auth";
 import { sessionMiddleware } from "./middleware/session";
 import passport from "passport";
 
-// Import passport configurations
+// Import passport session serialization/deserialization config
 import "./middleware/passport-session";
+
+// Import passport strategy(ies) config
 import "./middleware/passport-github";
 
 const app = express();
 
+// Setup express session
 app.use(sessionMiddleware);
 
+// Register passport
 app.use(passport.initialize());
+
+// Setup passport session integration
 app.use(passport.session());
 
 app.get("/", isAuth, (req, res) => {
