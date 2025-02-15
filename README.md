@@ -1,6 +1,6 @@
 # Express Passport GitHub OAuth2 Functional Testing Demo
 
-This project demonstrates how to functionally test GitHub OAuth2 authentication in an Express.js application using Passport.js using a mocked passport authentication strategy. It serves as a reference implementation for testing routes that require authentication, without making HTTP requests to the authentication provider (in this case Github).
+This project demonstrates how to functionally test GitHub (or any) OAuth2 authentication in an Express.js application using Passport.js using a mocked passport authentication strategy. It serves as a reference implementation for testing routes that require authentication, without making HTTP requests to the authentication provider (in this case Github).
 
 ## Setup
 
