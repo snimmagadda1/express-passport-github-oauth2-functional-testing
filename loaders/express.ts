@@ -1,3 +1,4 @@
+import { Server } from "http";
 import express, { type Request, type Response } from "express";
 import passport from "passport";
 import { isAuth } from "../middleware/is-auth";
@@ -5,7 +6,10 @@ import { sessionMiddleware } from "../middleware/session";
 import type { CreateUserRequest } from "../models/user";
 import { userService } from "../services/userService";
 
-export default async function (): Promise<express.Express> {
+export default async function (): Promise<{
+  app: express.Express;
+  server: Server;
+}> {
   const app = express();
   app.use(express.json());
 
@@ -45,9 +49,9 @@ export default async function (): Promise<express.Express> {
     (req, res) => res.redirect("/")
   );
 
-  app.listen(3000, () => {
+  const server = app.listen(3000, () => {
     console.log("Listening on port 3000");
   });
 
-  return app;
+  return { app, server };
 }

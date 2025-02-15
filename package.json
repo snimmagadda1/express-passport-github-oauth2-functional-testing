@@ -5,7 +5,7 @@
   "scripts": {
     "start": "bun run index.ts",
     "build": "bun build index.ts --target bun --compile --outfile app",
-    "test": "NODE_ENV=test bun run index.ts"
+    "test": "NODE_ENV=test bun test"
   },
   "devDependencies": {
     "@types/bun": "^1.2.2"
