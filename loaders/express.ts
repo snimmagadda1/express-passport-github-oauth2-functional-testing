@@ -31,7 +31,7 @@ export default async function (): Promise<{
   app.post(
     "/users",
     isAuth,
-    (req: Request<{}, {}, CreateUserRequest>, res: Response) => {
+    (req: Request<any, any, CreateUserRequest>, res: Response) => {
       const { name, email } = req.body;
       const user = { id: Date.now().toString(), name, email };
       userService.save(user);

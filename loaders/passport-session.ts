@@ -1,7 +1,6 @@
 // Import passport session serialization/deserialization config
 import passport from "passport";
 import { userService } from "../services/userService";
-import { type User } from "../models/user";
 
 /**
  * Configures passport session serialization and deserialization

@@ -25,11 +25,12 @@ export default class MockGHStrategy extends passport.Strategy {
    * `this.redirect(url, status)`, `this.pass()`, or `this.error(err)`.
    * https://github.com/jaredhanson/passport-strategy#augmented-methods.
    *
-   * @param {Object} req - Request.
+   * @param {Object} _req - Request.
    * @param {Object} options - The options object passed to `passport.authenticate()`.
    * @return {void}
    */
-  authenticate(req: any, options: any) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  authenticate(_req: any, _options: any) {
     this._cb("N/A", "N/A", this._user, (err: any, user: any) => {
       this.success(user);
     });
