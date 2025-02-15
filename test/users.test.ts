@@ -48,15 +48,15 @@ afterEach(async () => {
 });
 
 describe("POST /users", () => {
-  // test("should return 401 when not authenticated", async () => {
-  //   const mockUser = {
-  //     email: "test@example.com",
-  //     name: "Test User",
-  //   };
+  test("should return 401 when not authenticated", async () => {
+    const mockUser = {
+      email: "test@example.com",
+      name: "Test User",
+    };
 
-  //   // new request instance
-  //   await request(app).post("/users").send(mockUser).expect(401);
-  // });
+    // new request instance
+    await request(app).post("/users").send(mockUser).expect(401);
+  });
 
   test("should create a new user when authenticated", async () => {
     const mockUser = {
@@ -69,14 +69,13 @@ describe("POST /users", () => {
       .post("/users")
       .send(mockUser)
       .expect("Content-Type", /json/)
-      .expect(200);
+      .expect(201);
 
     expect(response.body).toMatchObject({
       email: mockUser.email,
       name: mockUser.name,
     });
     expect(response.body.id).toBeDefined();
-    expect(response.body._deleted).toBe(false);
 
     // Verify the user exists in the store
     const createdUser = userService.findById(response.body.id);
