@@ -1,8 +1,6 @@
 # Express Passport GitHub OAuth2 Functional Testing Demo
 
-This project demonstrates how to functionally test GitHub (or any) OAuth2 authentication in an Express.js application using Passport.js using a mocked passport authentication strategy. It serves as a reference implementation for testing routes that require authentication, without making HTTP requests to the authentication provider (in this case Github).
-
-## Setup
+This project demonstrates how to functionally test GitHub (or any) OAuth2 authentication in an Express.js application using Passport.js using a mocked passport authentication strategy. It serves as a reference implementation for testing routes that require authentication, without making HTTP requests to the authentication provider (in this case Github).It contains: 
 
 - Express.js server
 - [Delegated sign-in](https://web.archive.org/web/20160322014955/http://hueniverse.com/2009/04/16/introducing-sign-in-with-twitter-oauth-style-connect/) using passport-github2 for oauth2
@@ -20,11 +18,13 @@ This project demonstrates how to functionally test GitHub (or any) OAuth2 authen
 1. Clone the repository
 
 2. Install dependencies:
+
 ```bash
 bun install
 ```
 
 3. Create a `.env` file in the root directory:
+
 ```env
 NODE_ENV=development
 GITHUB_CLIENT_ID=your_client_id
@@ -72,19 +72,14 @@ The server will start on `http://localhost:3000`
 
 ## Testing
 
-TODO
-
-The project includes functional tests to verify the authentication flow. Tests demonstrate:
-- Session handling
-- OAuth callback processing
-- Protected route access
-- User storage operations
+The project includes functional tests to verify the behavior of protected routes, without the need to contact the authentication provider(s).
 
 Run tests with:
+
 ```bash
 bun test
 ```
 
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
