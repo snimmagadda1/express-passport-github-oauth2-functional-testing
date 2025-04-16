@@ -20,7 +20,6 @@ class UserService {
   }
 
   findOrCreate(profile: any): User {
-    console.log("GOT USER", JSON.stringify(profile));
     const existingUser = this.findById(profile.id);
     if (existingUser) {
       return existingUser;
